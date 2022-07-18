@@ -3,7 +3,7 @@
 ## Objetivo
 #### Mediante un cluster de Dataproc que tenga instalada la herramienta Sqoop, migrar las tablas almacenadas en una instancia CloudSQL-SQLServer hacia Google Cloud Storage
 ## 1. Creacion del cluster de Dataproc con la herramienta Sqoop
-Ejecutar el siguiente comando en la Cloud Shell de nuestro proyecto:
+Ejecutar el siguiente comando en la Cloud Shell de nuestro proyecto, con el objetivo de crear un cluster de Dataproc con las dependencias necesarias.\
 `gcloud dataproc clusters create <CLUSTER_NAME> \`\
 `--region <MY_REGION> \`\
 `--tags=cluster-dataproc \`\
@@ -20,7 +20,7 @@ Ejecutar el siguiente comando en la Cloud Shell de nuestro proyecto:
 Luego de unos minutos se creara nuestro cluster de Dataproc, y si nos dirigimos al servicio de Compute Engine podremos ver tres maquinas corriendo, un master y dos workers correspondientes al cluster previamente creado.
 
 ## 2. Conexion del cluster Dataproc a la instancia CloudSQL-SQLServer
-Para establecer una conexion entre el cluster de Dataproc y la instancia de CloudSQL-SQLServer, necesitamos haber creado previamente la instancia CloudSQL-SQLServer. Luego de crear la instancia nos dirijimos al servicio de Compute Engine y accedemos mediante SSH a las tres compute engine pertenecientes al cluster de Dataproc y ejecutamos los siguientes comandos en cada una de ellas con el objetivo de inicializar un proxy hacia el SQL Server.
+Para establecer una conexion entre el cluster de Dataproc y la instancia de CloudSQL-SQLServer, necesitamos haber creado previamente la instancia CloudSQL-SQLServer. Luego de crear la instancia nos dirijimos al servicio de Compute Engine y accedemos mediante SSH a las tres compute engine pertenecientes al cluster de Dataproc y ejecutamos los siguientes comandos en cada una de ellas con el objetivo de inicializar un proxy hacia el SQL Server.\
 `wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 -O cloud_sql_proxy`\
 `chmod +x cloud_sql_proxy`\
 `./cloud_sql_proxy -instances=<INSTANCE_CONNECTION_NAME>=tcp:<PORT>`\
