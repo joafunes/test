@@ -2,6 +2,8 @@
 ![dataproc y sqoop](https://user-images.githubusercontent.com/50117113/179570300-60a13548-6e49-4c8c-9b4e-9052427ace73.png)
 ## Objetivo
 #### Mediante un cluster de Dataproc que tenga instalada la herramienta Sqoop, migrar las tablas almacenadas en una instancia CloudSQL-SQLServer hacia Google Cloud Storage
+<img width="488" alt="sqoop_y_dp" src="https://user-images.githubusercontent.com/50117113/179613477-257c8c24-7a36-4354-9cdf-a05e8eae8060.png">
+
 ## 1. Creacion del cluster de Dataproc con la herramienta Sqoop
 Ejecutar el siguiente comando en la Cloud Shell de nuestro proyecto, con el objetivo de crear un cluster de Dataproc con las dependencias necesarias.\
 `gcloud dataproc clusters create <CLUSTER_NAME> \`\
@@ -23,7 +25,7 @@ Luego de unos minutos se creara nuestro cluster de Dataproc, y si nos dirigimos 
 Para establecer una conexion entre el cluster de Dataproc y la instancia de CloudSQL-SQLServer, necesitamos haber creado previamente la instancia CloudSQL-SQLServer. Luego de crear la instancia nos dirijimos al servicio de Compute Engine y accedemos mediante SSH a las tres compute engine pertenecientes al cluster de Dataproc y ejecutamos los siguientes comandos en cada una de ellas con el objetivo de inicializar un proxy hacia el SQL Server.\
 `wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 -O cloud_sql_proxy`\
 `chmod +x cloud_sql_proxy`\
-`./cloud_sql_proxy -instances=<INSTANCE_CONNECTION_NAME>=tcp:<PORT>`\
+`./cloud_sql_proxy -instances=<INSTANCE_CONNECTION_NAME>=tcp:<PORT>`
 
 **NOTA:** El parametro INSTANCE_CONNECTION_NAME podras verlo en la pestaña del servicio CloudSQL correspondiente a tu instancia creada, su formato suele ser `myproject:myregion:myinstance`. En cuanto a PORT, en SQL Server normalmente es 1433, en MySQL 3306 y en Postgre 5432.
 
