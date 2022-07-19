@@ -98,7 +98,8 @@ sqoop import -Dmapred.job.queuename=<JOB_NAME> \
 --m 1
 ```
 Como puede observar algunos parametros son los mismos del paso 3 y por lo tanto no seran explicados nuevamente. Un nuevo parametro es `check-column` el cual indica cual columna será examinada para determinar si hay nuevas filas en la tabla `TABLE_NAME`, la columna no puede ser del tipo CHAR/NCHAR/VARCHAR/VARNCHAR/ LONGVARCHAR/LONGNVARCHAR.\
-Luego tenemos otro parametro llamado `incremental` al cual debemos proveerle el modo en que Sqoop determinará cuales filas son nuevas, por un lado tenemos el modo `append` que es el utilizado en este ejemplo y por otro lado tenemos el modo `last-modified`. El modo `append` debe utilizarse cuando a medida que se agreguen nuevas filas, los valores de la columna `COLUMN_NAME` sean crecientes, entonces Sqoop observará `VALUE` del parametro `last-value` e importará aquellas filas que tengan un valor mayor a este.
+Luego tenemos otro parametro llamado `incremental` al cual debemos proveerle el modo en que Sqoop determinará cuales filas son nuevas, por un lado tenemos el modo `append` que es el utilizado en este ejemplo y por otro lado tenemos el modo `last-modified`. El modo `append` debe utilizarse cuando a medida que se agreguen nuevas filas, los valores de la columna `COLUMN_NAME` sean crecientes, entonces Sqoop observará `VALUE` del parametro `last-value` e importará aquellas filas que tengan un valor mayor a este.\
+A modo de ejemplo, si a `check-column` le pasamos `id`, y a `last-value` le pasamos `15` entonces Sqoop importará aquellas filas que en su columna id tengan un valor mayor a 15.
 
 
 
