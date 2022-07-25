@@ -101,6 +101,7 @@ Como puede observar algunos parametros son los mismos del paso 3 y por lo tanto 
 Luego tenemos otro parametro llamado `incremental` al cual debemos proveerle el modo en que Sqoop determinará cuales filas son nuevas, por un lado tenemos el modo `append` que es el utilizado en este ejemplo y por otro lado tenemos el modo `last-modified`. El modo `append` debe utilizarse cuando a medida que se agreguen nuevas filas, los valores de la columna `COLUMN_NAME` sean crecientes, entonces Sqoop observará `VALUE` del parametro `last-value` e importará aquellas filas que tengan un valor mayor a este.\
 A modo de ejemplo, si a `check-column` le pasamos `id`, y a `last-value` le pasamos `15` entonces Sqoop importará aquellas filas que en su columna id tengan un valor mayor a 15.\
 Para mayor informacion sobre cargas incrementales ver [aqui](https://sqoop.apache.org/docs/1.4.7/SqoopUserGuide.html#_introduction:~:text=change%20in%20future.-,7.2.10.%C2%A0Incremental%20Imports,-Sqoop%20provides%20an)
+
 **NOTA**: Notar que en ``target-dir`` no se ha especificado un bucket de GCS, sino un directorio del cluster de Dataproc.
 
 
